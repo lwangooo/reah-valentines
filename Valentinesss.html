@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For Reah 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      background: radial-gradient(circle at top, #ff9a9e, #fad0c4, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .slide {
+      background: rgba(255,255,255,0.96);
+      padding: 40px;
+      border-radius: 35px;
+      box-shadow: 0 0 30px rgba(255,47,104,0.6),
+                  0 0 60px rgba(255,182,193,0.6);
+      max-width: 380px;
+      z-index: 5;
+      animation: popIn 1s ease;
+    }
+
+    h1, h2 {
+      color: #ff2f68;
+    }
+
+    p {
+      color: #444;
+      font-size: 15px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 15px 40px;
+      font-size: 18px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .open, .yes {
+      background: linear-gradient(45deg, #ff2f68, #ff85a2);
+      color: white;
+      box-shadow: 0 0 15px rgba(255,47,104,0.8);
+    }
+
+    .no {
+      background: #bbb;
+      color: white;
+      position: absolute;
+    }
+
+    /* Decorations */
+    .float {
+      position: absolute;
+      animation: floatUp linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/02/28/audio_5c7c0dfe6f.mp3" type="audio/mpeg">
+</audio>
+
+<!-- CRAZY DECORATIONS -->
+<script>
+  const icons = ["💖","💕","❤️","✨","⭐","💫","🎈","💘","🌸","🫧"];
+  for (let i = 0; i < 90; i++) {
+    let deco = document.createElement("div");
+    deco.className = "float";
+    deco.innerHTML = icons[Math.floor(Math.random() * icons.length)];
+    deco.style.left = Math.random() * 100 + "vw";
+    deco.style.fontSize = (Math.random() * 20 + 15) + "px";
+    deco.style.animationDuration = (Math.random() * 4 + 4) + "s";
+    document.body.appendChild(deco);
+  }
+</script>
+
+<!-- SLIDE 1 -->
+<div class="slide" id="slide1">
+  <h1>Hey Reah 💌</h1>
+  <p>
+    I made something just for you…<br>
+    Please open it 💖✨
+  </p>
+  <button class="open" onclick="openCard()">Open 💘</button>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide" id="slide2" style="display:none;">
+  <h1>Reah 💕</h1>
+  <p>
+    We met on social media, but I’ve genuinely enjoyed
+    speaking to you and getting to know you 🌸✨
+  </p>
+  <h2>Will you be my Valentine?</h2>
+
+  <button class="yes" onclick="yesClicked()">Yes</button>
+  <button class="no" id="noBtn" onmouseover="moveNo()">No</button>
+</div>
+
+<script>
+  function openCard() {
+    slide1.style.display = "none";
+    slide2.style.display = "block";
+  }
+
+  function yesClicked() {
+    slide2.innerHTML = `
+      <h1>YAAAAAAYYYYYYYY!!!1 🥳💘</h1>
+      <img src="https://media.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif" width="300">
+      <p>Made with love by Ngcwele 💖</p>
+    `;
+    megaExplosion();
+  }
+
+  function moveNo() {
+    noBtn.style.top = Math.random() * 80 + "vh";
+    noBtn.style.left = Math.random() * 80 + "vw";
+  }
+
+  function megaExplosion() {
+    for (let i = 0; i < 120; i++) {
+      let boom = document.createElement("div");
+      boom.className = "float";
+      boom.innerHTML = ["❤️","💖","✨","🎉","💘"][Math.floor(Math.random()*5)];
+      boom.style.left = Math.random() * 100 + "vw";
+      boom.style.fontSize = (Math.random() * 25 + 15) + "px";
+      boom.style.animationDuration = "2.5s";
+      document.body.appendChild(boom);
+      setTimeout(() => boom.remove(), 2500);
+    }
+  }
+</script>
+
+</body>
+</html>
